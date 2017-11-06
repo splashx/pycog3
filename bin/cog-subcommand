@@ -5,10 +5,13 @@ import os
 
 bundle_name = os.getenv("COG_BUNDLE")
 command_name = os.getenv("COG_COMMAND").split("-")[0]
+subcommand_name = os.getenv("COG_COMMAND").split("-")[1]
 class_name = command_name.capitalize()
-full_path = "%s.commands.%s" % (bundle_name, command_name)
+subclass_name = subcommand_name.capitalize()
+
+full_path = "%s.commands.%s.%s" % (bundle_name, command_name, subcommand_name)
 
 bundle_module = importlib.import_module(full_path)
-klass = getattr(bundle_module, class_name)
+klass = getattr(bundle_module, subclass_name)
 cmd = klass()
 cmd.execute()
