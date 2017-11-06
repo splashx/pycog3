@@ -27,9 +27,35 @@ directory layout:
            |-- <command2>.py
 
 ```
+
+`cog-subcommand` can be used with the following file structure:
+
+```
+<bundle_name>
+  |
+  |-- <bundle_name>
+       |-- __init__.py
+       |-- commands
+           |
+           |-- __init__.py
+           |-- <command1>.py
+           |-- <command2>
+                |
+                |-- __init__.py
+                |-- <subcommand1>.py           
+                |-- <subcommand2>.py
+
+```
+
+
+`sub-commands` is mapped from `COG_COMMAND = <command2>-<subcommand1>`.
+
+
 ## Examples
 
 See the [cog-bundles/statuspage](https://github.com/cog-bundles/statuspage) repository for an example of this library in action.
+
+A `sub-command` example can be checked in cog-bundle [pi-bundle](https://github.com/pan-net-security/pi-bundle).
 
 ## Installation
 
