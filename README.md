@@ -28,7 +28,12 @@ directory layout:
 
 ```
 
-`cog-subcommand` can be used with the following file structure:
+pycog3 also supports multi-level by using the `-` field separator in the command name. 
+For example, defining:
+ * `command1` - maps to `!command1`
+ * `level1-level2-command` - maps to `!level1-level2-command`
+ * `level1-...-...-levelN-command` - maps to `!level1-...-...-levelN-command`
+ 
 
 ```
 <bundle_name>
@@ -39,30 +44,35 @@ directory layout:
            |
            |-- __init__.py
            |-- <command1>.py
-           |-- <command2>
+           |-- <level1>
                 |
                 |-- __init__.py
-                |-- <subcommand1>.py           
-                |-- <subcommand2>.py
-
+                |-- <level2>.py
+                |    |
+                |    |-- <command>.py
+                |
+                |-- <...>
+                     |
+                     |-- <...>
+                         | 
+                         | -- <levelN>
+                              |
+                              |-- <command>.py           
 ```
-
-
-`sub-commands` is mapped from `COG_COMMAND = <command2>-<subcommand1>`.
 
 
 ## Examples
 
 See the [cog-bundles/statuspage](https://github.com/cog-bundles/statuspage) repository for an example of this library in action.
 
-A `sub-command` example can be checked in cog-bundle [pi-bundle](https://github.com/pan-net-security/pi-bundle).
+If you're interested in the multi-level usage, check the cog-bundle [pi-bundle](https://github.com/pan-net-security/pi-bundle).
 
 ## Installation
 
 Add this line to your application's setup.py or requirements.txt:
 
 ```
-pycog3>=0.1.25
+pycog3>=0.1.28
 ```
 
 ## TODO
