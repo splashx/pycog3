@@ -31,6 +31,7 @@ directory layout:
 pycog3 also supports multi-level by using the `-` field separator in the command name. 
 For example, defining:
  * `command1` - maps to `!command1`
+ * `level1-command` - maps to `!level1-command`
  * `level1-level2-command` - maps to `!level1-level2-command`
  * `level1-...-...-levelN-command` - maps to `!level1-...-...-levelN-command`
  
@@ -47,7 +48,8 @@ For example, defining:
            |-- <level1>
                 |
                 |-- __init__.py
-                |-- <level2>.py
+                |-- <command>.py
+                |-- <level2>
                 |    |
                 |    |-- <command>.py
                 |
