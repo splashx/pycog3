@@ -1,4 +1,3 @@
-# from setuptools import setup, find_packages
 from distutils.core import setup
 
 setup (
@@ -11,7 +10,6 @@ setup (
     url = "https://github.com/cog-bundles/pycog3",
     download_url = "https://github.com/cog-bundles/pycog3/tarball/0.1.28",
     packages = ["cog"],
-    requires = ["requests (>=2.10)", "PyYAML (>=3.11)"],
     keywords = ["bot", "devops", "chatops", "automation"],
     classifiers = [
         "Programming Language :: Python :: 3",
