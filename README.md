@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/operable/pycog3.svg?branch=master)](https://travis-ci.org/operable/pycog3)
+
 # pycog3
 
 Simple, opinionated library for building Cog commands in Python3.
