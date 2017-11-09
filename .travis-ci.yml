@@ -1,0 +1,22 @@
+# encrypt the travis password / token using:
+# travis encrypt --add deploy.password
+#deploy:
+#  provider: pypi
+#  user: "Your username"
+#  password:
+#    secure: "Your encrypted password"
+# on:
+#    tags: true
+
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+before_install:
+- make docker
+
+script:
+- make test

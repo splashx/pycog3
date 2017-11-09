@@ -13,7 +13,7 @@ imports, instantiates, and runs Python command code based on the
 values of `$COG_BUNDLE` and `$COG_COMMAND`.
 
 `cog-command`'s magic requires that Python projects follow a strict
-directory layout:
+directory layout (basic):
 
 ```
 <bundle_name>
@@ -28,12 +28,12 @@ directory layout:
 
 ```
 
-pycog3 also supports multi-level by using the `-` field separator in the command name. 
+pycog3 also supports more advanced, multi-level structure when using the `-` field separator in the command name. 
 For example, defining:
- * `command1` - maps to `!command1`
- * `level1-command` - maps to `!level1-command`
- * `level1-level2-command` - maps to `!level1-level2-command`
- * `level1-...-...-levelN-command` - maps to `!level1-...-...-levelN-command`
+ * `commands\commanda.py` - maps to `!commanda`
+ * `commands\level1\commandb.py` - maps to `!level1-commandb`
+ * `commands\level1\level2a\commandc.py` - maps to `!level1-level2a-commandb`
+ * `commands\level1\level2b\level2bn\commandz.py` - maps to `!level1-level2b-lebel2bn-commandz`
  
 
 ```
@@ -44,30 +44,54 @@ For example, defining:
        |-- commands
            |
            |-- __init__.py
-           |-- <command1>.py
+           |-- <commanda>.py
+           |-- <commandb>.py
+           .
+           .
+           |-- <commandz>.py
+           |
            |-- <level1>
                 |
                 |-- __init__.py
-                |-- <command>.py
-                |-- <level2>
-                |    |
-                |    |-- <command>.py
+                |-- <commanda>.py
+                |-- <commandb>.py
+                .
+                .
+                |-- <commandz>.py
                 |
-                |-- <...>
+                |-- <level2a>
+                |    |
+                |    |-- <commanda>.py
+                |    |-- <commandb>.py
+                |    |-- <commandc>.py
+                |    .
+                |    .
+                |    |-- <commandz>.py
+                |
+                |-- <level2b>
                      |
+                     |-- __init__.py
                      |-- <...>
-                         | 
-                         | -- <levelN>
+                         |
+                         |-- __init__.py
+                         | -- <level2bn>
                               |
-                              |-- <command>.py           
+                              |-- __init__.py
+                              |-- <commanda>.py
+                              |-- <commandb>.py
+                              .
+                              .
+                              |-- <commandz>.py
+
 ```
 
+The only requirement is a class with the same name of the filename should exist (first letter capital).
 
 ## Examples
 
 See the [cog-bundles/statuspage](https://github.com/cog-bundles/statuspage) repository for an example of this library in action.
 
-If you're interested in the multi-level usage, check the cog-bundle [pi-bundle](https://github.com/pan-net-security/pi-bundle).
+If you're interested in the multi-level usage, check the cog-bundle [pi-bundle](https://github.com/pan-net-security/pi-bundle) or the test bundle in `test/`.
 
 ## Installation
 

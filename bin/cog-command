@@ -2,6 +2,7 @@
 
 import importlib
 import os
+import sys
 
 bundle_name = os.getenv("COG_BUNDLE")
 command_name = os.getenv("COG_COMMAND")
@@ -11,11 +12,21 @@ command_name = os.getenv("COG_COMMAND")
 # this doesn't break compatibility for existing bundles
 # because if a bundle uses `-` in the command name
 # pycog3 <= 0.1.27 throws exception
-path = command_name.replace("-",".")
+try:
+    path = command_name.replace("-",".")
+except AttributeError as e:
+    print("ERROR: COG_COMMAND is empty")
+    sys.exit(1)
+
 full_path = "%s.commands.%s" % (bundle_name, path)
 class_name = command_name.split("-")[-1].capitalize()
 
-bundle_module = importlib.import_module(full_path)
+try:
+    bundle_module = importlib.import_module(full_path)
+except ModuleNotFoundError as e:
+    print('ERROR: Unable to load module "' + str(path) + '"')
+    sys.exit(1)
+
 klass = getattr(bundle_module, class_name)
 cmd = klass()
 cmd.execute()
