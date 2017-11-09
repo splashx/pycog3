@@ -33,7 +33,7 @@ For example, defining:
  * `commands\commanda.py` - maps to `!commanda`
  * `commands\level1\commandb.py` - maps to `!level1-commandb`
  * `commands\level1\level2a\commandc.py` - maps to `!level1-level2a-commandb`
- * `commands\level1\level2b\level2bn\commandz.py` - maps to `!level1-level2b-lebel2bn-commandz`
+ * `commands\level1\level2b\leveln\commandz.py` - maps to `!level1-level2b-lebel2bn-commandz`
  
 
 ```
@@ -74,7 +74,7 @@ For example, defining:
                      |-- <...>
                          |
                          |-- __init__.py
-                         | -- <level2bn>
+                         | -- <leveln>
                               |
                               |-- __init__.py
                               |-- <commanda>.py

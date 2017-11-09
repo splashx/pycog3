@@ -1,7 +1,7 @@
-from testbundle.commands.level1.level2.level3.base import Level3
+from testbundle.commands.level1.level2b.leveln.base import Leveln
 
 
-class Commandd(Level3):
+class Commandz(Leveln):
     def __init__(self):
         super().__init__()
 
@@ -9,6 +9,6 @@ class Commandd(Level3):
         self.run_command()
 
     def run_command(self):
-        level = self.level3_function()
-        level = level + "d"
+        level = self.leveln_function()
+        level = level + "z"
         self.response.content(level, template="template").send()

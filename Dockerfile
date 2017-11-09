@@ -4,14 +4,13 @@ USER root
 
 RUN mkdir -p /home/pycog3/
 
-COPY setup.py requirements.txt  /home/pycog3/
-COPY ./cog/                     /home/pycog3/cog/
-COPY ./bin/                     /home/pycog3/bin/
-COPY ./tests/                     /home/pycog3/tests/
+COPY setup.py           /home/pycog3/
+COPY ./cog/             /home/pycog3/cog/
+COPY ./bin/             /home/pycog3/bin/
+COPY ./tests/           /home/pycog3/tests/
 
 WORKDIR /home/pycog3
 
-RUN pip3 install -r requirements.txt
 RUN pip3 install .
 
 RUN mkdir -p /home/bundle/testbundle/testbundle/

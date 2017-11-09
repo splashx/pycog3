@@ -1,5 +1,6 @@
 from testbundle.commands.level1.base import Level1
 
+
 class Level2b(Level1):
     def run(self):
         pass
@@ -8,4 +9,4 @@ class Level2b(Level1):
         super().__init__()
 
     def level2b_function(self):
-        return "2b" 
+        return "2b"

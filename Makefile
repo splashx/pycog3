@@ -5,7 +5,7 @@ IMAGE_TAG            = cog/$(BUNDLE_NAME):$(BUNDLE_VERSION)
 .PHONY: docker docker-clean docker-shell docker-fresh test
 
 test: docker
-	docker run -it cog/$(BUNDLE_NAME):$(BUNDLE_VERSION) python -m unittest discover tests/
+	docker run -it cog/$(BUNDLE_NAME):$(BUNDLE_VERSION) python -m unittest discover -v tests/
 
 docker: Dockerfile .dockerignore
 	docker build -q --rm -t $(IMAGE_TAG) .
