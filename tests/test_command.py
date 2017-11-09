@@ -17,7 +17,7 @@ class TestCommand(unittest.TestCase):
         os.environ['COG_BUNDLE'] = 'testbundle'
         pass
 
-    def test_level0(self):
+    def test_level0_commanda(self):
         os.environ['COG_COMMAND'] = 'commanda'
         result = check_output(["cog-command"])
 
@@ -29,7 +29,7 @@ class TestCommand(unittest.TestCase):
 
         self.assertEqual(result.decode("utf-8") , self.fixed_output_prefix+'"1b"\n')
 
-    def test_level1_level2a_commandb(self):
+    def test_level1_level2a_commandc(self):
         os.environ['COG_COMMAND'] = 'level1-level2a-commandc'
         result = check_output(["cog-command"])
 
