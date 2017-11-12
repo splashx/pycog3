@@ -20,6 +20,7 @@ class TestCommand(unittest.TestCase):
     def setUp(self):
         os.environ['dyn_config_var1'] = '1'
         os.environ['COG_BUNDLE'] = self.bundle_name
+        self.maxDiff=None
         pass
 
     def test_level0_commanda(self):
