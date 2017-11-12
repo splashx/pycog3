@@ -35,11 +35,11 @@ For example, defining:
  * `commands\commanda.py` - maps to `!commanda`
  * `commands\level1\commandb.py` - maps to `!level1-commandb`
  * `commands\level1\level2a\commandc.py` - maps to `!level1-level2a-commandb`
- * `commands\level1\level2b\leveln\commandz.py` - maps to `!level1-level2b-lebeln-commandz`
+ * `commands\level1\level2b\leveln\commandz.py` - maps to `!level1-level2b-leveln-commandz`
  
 
 ```
-<bundle_name>
+<bundle_directory>
   |
   |-- <bundle_name>
        |-- __init__.py
