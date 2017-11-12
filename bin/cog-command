@@ -4,28 +4,33 @@ import importlib
 import os
 import sys
 
+
+def fail(message):
+    print("%s" % (message), file=sys.stderr)
+    sys.stdout.flush()
+    sys.stderr.flush()
+    sys.exit(1)
+
 bundle_name = os.getenv("COG_BUNDLE")
+
 command_name = os.getenv("COG_COMMAND")
 
-# `-` cannot be used in class names in python so
-# since command_name is used directly for klass
-# this doesn't break compatibility for existing bundles
-# because if a bundle uses `-` in the command name
-# pycog3 <= 0.1.27 throws exception
 try:
-    path = command_name.replace("-",".")
+    path = command_name.replace("-", ".")
 except AttributeError as e:
-    print("ERROR: COG_COMMAND is empty")
-    sys.exit(1)
+     fail("ERROR: COG_COMMAND env var is not set")
 
 full_path = "%s.commands.%s" % (bundle_name, path)
 class_name = command_name.split("-")[-1].capitalize()
 
+
 try:
     bundle_module = importlib.import_module(full_path)
-except ModuleNotFoundError as e:
-    print('ERROR: Unable to load module "' + str(path) + '"')
-    sys.exit(1)
+except ImportError as e:
+    if len(command_name)==0:
+        fail("ERROR: COG_COMMAND env var is set but empty")
+    else:
+        fail('ERROR: Unable to import module "' + str(full_path) + '"')
 
 klass = getattr(bundle_module, class_name)
 cmd = klass()

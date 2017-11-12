@@ -12,11 +12,16 @@ sudo: required
 
 language: python
 
-services:
-  - docker
+python:
+  - 3.5
+  - 3.6
+  - nightly
 
-before_install:
-- make docker
+env:
+  - PYTHONPATH=tests/testbundle
+
+install:
+  - pip3 install .
 
 script:
-- make test
+  - python -m unittest discover -v tests/
