@@ -23,13 +23,14 @@ except AttributeError as e:
 full_path = "%s.commands.%s" % (bundle_name, path)
 class_name = command_name.split("-")[-1].capitalize()
 
+
 try:
     bundle_module = importlib.import_module(full_path)
-except ModuleNotFoundError as e:
+except ImportError as e:
     if len(command_name)==0:
         fail("ERROR: COG_COMMAND env var is set but empty")
     else:
-        fail('ERROR: Unable to load module "' + str(full_path) + '"')
+        fail('ERROR: Unable to import module "' + str(full_path) + '"')
 
 klass = getattr(bundle_module, class_name)
 cmd = klass()
