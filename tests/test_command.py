@@ -61,7 +61,7 @@ class TestCommand(unittest.TestCase):
         os.environ['COG_COMMAND'] = 'nonexisting'
         full_path = "%s.commands.%s" % (self.bundle_name, os.environ.get("COG_COMMAND"))
         result=subprocess.run(["cog-command"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        self.assertEqual(result.stderr.decode("utf-8"), 'ERROR: Unable to load module "' + str(full_path) + '"\n')
+        self.assertEqual(result.stderr.decode("utf-8"), 'ERROR: Unable to import module "' + str(full_path) + '"\n')
 
 if __name__ == '__main__':
     unittest.main()
