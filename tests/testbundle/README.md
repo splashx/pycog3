@@ -3,36 +3,28 @@ testbundle
 
 # Overview
 
-This is a dummy cog bundle used to test pycog3 python module
+This is a dummy cog bundle used to test pycog3 python module. 
  
-# Installing
-
-Create a virtual env and:
-
-```bash
-pip3 install --upgrade .
-```
-
 
 # Configuring
 
-There is one dynamic configuration file which should be set in the environmental variables:
-
-```bash
-export dyn_config_var1
- 
-```
+There is one dynamic configuration variable `dyn_config_var1` which should be set in the environmental variables:
 
 # Executing
 
+Should be executed after `pycog3` is installed. 
+If running outside cog's environment, at the root of the project `/`, do:
+
 ```bash
-/usb/bin/cog-command
+$ export PYTHONPATH=tests/testbundle
+$ export COG_BUNDLE="testbundle"
+$ export COG_COMMAND="commanda"
+$ export dyn_config_var1="foo"
+$ cog-command
+COG_TEMPLATE: template
+JSON
+"0a"
 ```
 
-# Building
 
-To build the Docker image, simply run:
 
-    $ make docker
-
-Requires Python 3.6.x, pip, make, and Docker.
